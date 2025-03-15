@@ -128,6 +128,22 @@ Resources:
     Type: AWS::S3::Bucket
 
 ###########
+# Add EC2 Instance
+###########
+
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: !Ref AmazonLinuxAMIID
+      SubnetId: !Ref PublicSubnet
+      SecurityGroupIds:
+        - !Ref AppSecurityGroup
+      Tags:
+        - Key: Name
+          Value: App Server
+
+###########
 # Outputs
 ###########
 
